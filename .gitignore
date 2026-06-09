@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# environment & secrets
+.env
+.env.*
+!.env.local.example
+
+# credentials & keys
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+service-account*.json
+
+# debug & logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# misc
+.DS_Store
+*.tsbuildinfo
+
+# cursor (local dev context — not for version control)
+CURSOR_CONTEXT.md

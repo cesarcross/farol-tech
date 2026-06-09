@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  --font-display: "Cormorant Garamond";
+  --font-body: "DM Sans";
+  --font-mono: "DM Mono";
+
+  /* Surfaces */
+  --color-bg: #0A0A0A;
+  --color-surface-1: #111111;
+  --color-surface-2: #1A1A1A;
+  --color-surface-3: #242424;
+  --color-border: rgba(245, 240, 232, 0.08);
+  --color-border-strong: rgba(245, 240, 232, 0.16);
+
+  /* Brand */
+  --color-amber: #F5A623;
+  --color-amber-light: #FFD07A;
+  --color-amber-glow: rgba(245, 166, 35, 0.15);
+  --color-amber-border: rgba(245, 166, 35, 0.3);
+  --color-amber-shadow: rgba(245, 166, 35, 0.25);
+  --color-accent-red: transparent;
+
+  /* Ink */
+  --color-ink: #F5F0E8;
+  --color-ink-secondary: #A8A090;
+  --color-ink-muted: #5C5650;
+
+  /* Nav & effects */
+  --color-nav-scrolled-bg: rgba(10, 10, 10, 0.88);
+  --color-hero-glow-inner: rgba(245, 166, 35, 0.12);
+  --color-hero-glow-outer: rgba(245, 166, 35, 0.04);
+
+  /* Spacing rhythm */
+  --section-py: clamp(5rem, 10vw, 9rem);
+  --container-px: clamp(1.25rem, 5vw, 3rem);
+  --max-width: 1280px;
+}
+
+[data-theme="light"] {
+  --color-bg: #FFFFFF;
+  --color-surface-1: #F5F5F0;
+  --color-surface-2: #ECEAE3;
+  --color-surface-3: #E0DDD4;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.16);
+
+  --color-amber: #006600;
+  --color-amber-light: #008800;
+  --color-amber-glow: rgba(0, 102, 0, 0.12);
+  --color-amber-border: rgba(0, 102, 0, 0.3);
+  --color-amber-shadow: rgba(204, 0, 0, 0.2);
+  --color-accent-red: #CC0000;
+
+  --color-ink: #111111;
+  --color-ink-secondary: #4A4A4A;
+  --color-ink-muted: #888880;
+
+  --color-nav-scrolled-bg: rgba(255, 255, 255, 0.88);
+  --color-hero-glow-inner: rgba(0, 102, 0, 0.1);
+  --color-hero-glow-outer: rgba(0, 102, 0, 0.04);
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Typography Scale ───────────────────────────────────────────────────── */
+.display-xl {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.display-lg {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.label-tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+
+/* ─── Layout Utilities ───────────────────────────────────────────────────── */
+.container-custom {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
+
+.section-padding {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-amber);
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-amber);
+  color: var(--color-bg);
+}
+
+/* ─── Noise Overlay ──────────────────────────────────────────────────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── Divider ────────────────────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ─── Beacon / Lighthouse Icon ───────────────────────────────────────────── */
+.beacon-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--color-amber);
+  animation: beaconRingExpand 3s ease-out infinite;
+}
+.beacon-ring:nth-child(2) { animation-delay: 1s; }
+.beacon-ring:nth-child(3) { animation-delay: 2s; }
+
+@keyframes beaconRingExpand {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ─── Marquee ────────────────────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Service Card ───────────────────────────────────────────────────────── */
+.service-card {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-1);
+  transition: border-color 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--color-amber-glow), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.service-card:hover::before {
+  opacity: 1;
+}
+.service-card:hover {
+  border-color: var(--color-amber-border);
+}
+
+/* ─── Button ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--color-amber);
+  color: var(--color-bg);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--color-amber-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px var(--color-amber-shadow);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+[data-theme="light"] .btn-primary {
+  background: var(--color-accent-red);
+}
+[data-theme="light"] .btn-primary:hover {
+  background: #E60000;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--color-border-strong);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+  background: var(--color-amber-glow);
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────── */
+.form-field {
+  width: 100%;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9375rem;
+  padding: 0.875rem 1.125rem;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  -webkit-appearance: none;
+}
+.form-field::placeholder {
+  color: var(--color-ink-muted);
+}
+.form-field:focus {
+  border-color: var(--color-amber);
+  background: var(--color-surface-3);
+}
+.form-label {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-secondary);
+  margin-bottom: 0.5rem;
+}
+.form-error {
+  font-size: 0.75rem;
+  color: #ff6b6b;
+  margin-top: 0.375rem;
+}
+
+/* ─── Nav Link ───────────────────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-secondary);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: var(--color-amber);
+  transition: width 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--color-ink);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─── Horizontal Rule decorative ─────────────────────────────────────────── */
+.hr-amber {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-amber);
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}

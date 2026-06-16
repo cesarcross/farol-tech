@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import LogoPlaceholder from "@/components/LogoPlaceholder";
 import { useI18n } from "@/context/i18n";
 import { EASE_OUT } from "@/lib/utils";
 
@@ -19,13 +20,15 @@ const stagger = {
 
 export default function Hero() {
   const { t } = useI18n();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+  const sectionRef = useRef<HTMLElement>(null);
+  const heroAnchorRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id="hero"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden"
     >
@@ -60,6 +63,7 @@ export default function Hero() {
         style={{ opacity }}
         className="container-custom relative z-10 pt-28 pb-20 md:pt-36"
       >
+        <div ref={heroAnchorRef} className="relative">
         <motion.div
           variants={stagger.container}
           initial="hidden"
@@ -73,13 +77,15 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <motion.h1 variants={stagger.item} className="display-xl mb-8">
-            <span className="block">{t.hero.headline1}</span>
-            <span className="block italic text-[var(--color-amber)]">
-              {t.hero.headline2}
-            </span>
-            <span className="block">{t.hero.headline3}</span>
-          </motion.h1>
+          <motion.div variants={stagger.item}>
+            <h1 ref={headlineRef} className="display-xl mb-8">
+              <span className="block">{t.hero.headline1}</span>
+              <span className="block italic text-[var(--color-amber)]">
+                {t.hero.headline2}
+              </span>
+              <span className="block">{t.hero.headline3}</span>
+            </h1>
+          </motion.div>
 
           {/* Subheading */}
           <motion.p
@@ -100,6 +106,9 @@ export default function Hero() {
             </a>
           </motion.div>
         </motion.div>
+
+        <LogoPlaceholder headlineRef={headlineRef} anchorRef={heroAnchorRef} />
+        </div>
 
         {/* Stats row */}
         <motion.div

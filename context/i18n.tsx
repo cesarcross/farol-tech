@@ -27,6 +27,8 @@ const translations = {
       cta_primary: "Start a project",
       cta_secondary: "See our work",
       scroll_hint: "Scroll to explore",
+      change_logo: "Change logo",
+      logo_preview: "Logo preview",
     },
     /* Services */
     services: {
@@ -162,6 +164,8 @@ const translations = {
       cta_primary: "Iniciar projeto",
       cta_secondary: "Ver o nosso trabalho",
       scroll_hint: "Explorar",
+      change_logo: "Mudar logo",
+      logo_preview: "Pré-visualização do logo",
     },
     services: {
       tag: "O que fazemos",

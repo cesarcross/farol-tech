@@ -18,15 +18,15 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <BeaconMark />
+              {/* <BeaconMark /> */}
               <span
                 className="font-display text-2xl font-light text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Farol<span className="text-[var(--color-amber)]">.</span>
+                Farol Tech<span className="text-[var(--color-amber)]">.</span>
               </span>
             </div>
-            <p className="text-sm text-[var(--color-ink-muted)] italic" style={{ fontFamily: "var(--font-display)" }}>
+            <p className="text-sm text-[var(--color-ink-subtle)] italic" style={{ fontFamily: "var(--font-display)" }}>
               {t.footer.tagline}
             </p>
             <div className="flex items-center gap-4 mt-6">
@@ -41,7 +41,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 flex items-center justify-center border border-[var(--color-border)] text-[var(--color-ink-muted)] hover:text-[var(--color-amber)] hover:border-[var(--color-amber)] transition-colors"
+                  className="w-9 h-9 flex items-center justify-center border border-[var(--color-border)] text-[var(--color-ink-subtle)] hover:text-[var(--color-amber)] hover:border-[var(--color-amber)] transition-colors"
                 >
                   <Icon size={16} strokeWidth={1.5} />
                 </a>
@@ -54,7 +54,7 @@ export default function Footer() {
             <h3 className="label-tag text-[var(--color-ink-secondary)] mb-5">
               {t.footer.offices}
             </h3>
-            <ul className="space-y-3 text-sm text-[var(--color-ink-muted)]">
+            <ul className="space-y-3 text-sm text-[var(--color-ink-subtle)]">
               <li className="flex items-center gap-2">
                 <span className="text-[var(--color-amber)]">→</span>
                 {t.footer.lisbon}
@@ -84,7 +84,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-amber)] transition-colors"
+                    className="text-sm text-[var(--color-ink-subtle)] hover:text-[var(--color-amber)] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--color-ink-muted)]">
+        <div className="mt-12 pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--color-ink-subtle)]">
           <p>
             © {currentYear} Farol Tech. {t.footer.legal}
           </p>

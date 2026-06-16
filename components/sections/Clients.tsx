@@ -5,62 +5,61 @@ import { motion, useInView } from "framer-motion";
 import { useI18n } from "@/context/i18n";
 
 /* SVG logos for major brands */
+const LOGO_FONT: React.SVGProps<SVGTextElement> = {
+  fontFamily: "Georgia, serif",
+  fontSize: "28",
+  fontStyle: "italic",
+  fontWeight: "700",
+  fill: "currentColor",
+};
+
 const logos = [
   {
     name: "Disney",
     svg: (
       <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <text x="0" y="30" fontFamily="Georgia, serif" fontSize="28" fontStyle="italic" fill="currentColor" fontWeight="700">Disney</text>
+        <text x="0" y="30" {...LOGO_FONT}>Disney</text>
       </svg>
     ),
   },
   {
     name: "Paramount",
     svg: (
-      <svg viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto">
-        <text x="0" y="28" fontFamily="Georgia, serif" fontSize="22" fill="currentColor" fontWeight="400" letterSpacing="3">PARAMOUNT</text>
+      <svg viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="30" {...LOGO_FONT}>Paramount</text>
       </svg>
     ),
   },
   {
     name: "Sky",
     svg: (
-      <svg viewBox="0 0 70 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
-        <rect width="70" height="40" rx="4" fill="currentColor" />
-        <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="20" fill="#0A0A0A" fontWeight="700">sky</text>
+      <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="30" {...LOGO_FONT}>Sky</text>
       </svg>
     ),
   },
   {
     name: "Johnson & Johnson",
     svg: (
-      <svg viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto">
-        <text x="0" y="27" fontFamily="Georgia, serif" fontSize="18" fill="currentColor" fontStyle="italic">Johnson</text>
-        <text x="100" y="27" fontFamily="Georgia, serif" fontSize="18" fill="currentColor" fontStyle="italic">&amp; Johnson</text>
+      <svg viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="30" {...LOGO_FONT}>Johnson &amp; Johnson</text>
       </svg>
     ),
   },
   {
     name: "CNN",
     svg: (
-      <svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
-        <text x="0" y="32" fontFamily="Arial Black, sans-serif" fontSize="30" fill="currentColor" fontWeight="900">CNN</text>
+      <svg viewBox="0 0 75 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="30" {...LOGO_FONT}>CNN</text>
       </svg>
     ),
   },
-  {
-    name: "SoFi",
-    svg: (
-      <svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-        <text x="0" y="29" fontFamily="Arial, sans-serif" fontSize="26" fill="currentColor" fontWeight="700">SoFi</text>
-      </svg>
-    ),
-  },
+
   {
     name: "DirecTV",
     svg: (
-      <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto">
-        <text x="0" y="28" fontFamily="Arial, sans-serif" fontSize="22" fill="currentColor" fontWeight="700" letterSpacing="1">DIRECTV</text>
+      <svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
+        <text x="0" y="30" {...LOGO_FONT}>DirecTV</text>
       </svg>
     ),
   },
@@ -146,12 +145,12 @@ export default function Clients() {
             className="font-display text-xl md:text-2xl font-light italic text-[var(--color-ink)] leading-relaxed mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            &ldquo;They delivered in 8 weeks what would have taken an internal team a full quarter.&rdquo;
+            &ldquo;{t.clients.quote}&rdquo;
           </p>
           <div className="flex items-center justify-center gap-3">
             <div className="w-8 h-px bg-[var(--color-amber)]" />
             <span className="label-tag text-[var(--color-ink-secondary)]">
-              Senior PM · Global Media Group
+              {t.clients.quote_author}
             </span>
             <div className="w-8 h-px bg-[var(--color-amber)]" />
           </div>

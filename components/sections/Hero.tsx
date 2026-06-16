@@ -23,6 +23,7 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const heroAnchorRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const headlineLine3Ref = useRef<HTMLSpanElement>(null);
 
   return (
     <section
@@ -38,22 +39,6 @@ export default function Hero() {
             "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
-        }}
-      />
-
-      {/* Amber glow orb */}
-      <motion.div
-        
-        className="absolute pointer-events-none"
-        style={{
-          top: "15%",
-          right: "-5%",
-          width: "clamp(320px, 45vw, 700px)",
-          height: "clamp(320px, 45vw, 700px)",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, var(--color-hero-glow-inner) 0%, var(--color-hero-glow-outer) 40%, transparent 70%)",
-          filter: "blur(1px)",
         }}
       />
 
@@ -78,7 +63,7 @@ export default function Hero() {
               <span className="block italic text-[var(--color-amber)]">
                 {t.hero.headline2}
               </span>
-              <span className="block">{t.hero.headline3}</span>
+              <span ref={headlineLine3Ref} className="block">{t.hero.headline3}</span>
             </h1>
           </motion.div>
 
@@ -102,7 +87,11 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <LogoPlaceholder headlineRef={headlineRef} anchorRef={heroAnchorRef} />
+        <LogoPlaceholder
+          headlineRef={headlineRef}
+          anchorRef={heroAnchorRef}
+          baselineRef={headlineLine3Ref}
+        />
         </div>
 
         {/* Stats row */}

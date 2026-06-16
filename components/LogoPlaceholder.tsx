@@ -18,12 +18,32 @@ const LOGOS = [
 
 const MIN_VIEWPORT = 900;
 
+const LOGO_OFFSET_Y = -20;
+
+/**
+ * Hero logo glow — tweak here for manual tests.
+ * scale: size relative to the logo box (1 = fills the box)
+ * offsetX / offsetY: nudge position in px (negative offsetY = up)
+ * innerOpacity / midOpacity / outerOpacity: gradient strength (0–100)
+ * blur: soft edge in px
+ */
+const LOGO_GLOW = {
+  scale: 1.01,
+  offsetX: 0,
+  offsetY: -18,
+  innerOpacity: 38,
+  midOpacity: 20,
+  outerOpacity: 8,
+  blur: 3,
+} as const;
+
 /** Matches .display-xl: 3 lines × line-height 0.95 */
 const FALLBACK_HEIGHT = "calc(3 * clamp(3.5rem, 9vw, 8rem) * 0.95)";
 
 interface LogoPlaceholderProps {
   headlineRef: React.RefObject<HTMLElement | null>;
   anchorRef: React.RefObject<HTMLElement | null>;
+  baselineRef: React.RefObject<HTMLElement | null>;
 }
 
 interface LayoutMetrics {
@@ -31,7 +51,7 @@ interface LayoutMetrics {
   height: number;
 }
 
-export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlaceholderProps) {
+export default function LogoPlaceholder({ headlineRef, anchorRef, baselineRef }: LogoPlaceholderProps) {
   const { t } = useI18n();
   const [index, setIndex] = useState(0);
   const [metrics, setMetrics] = useState<LayoutMetrics>({ top: 0, height: 0 });
@@ -41,21 +61,26 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
   const measure = useCallback(() => {
     const headline = headlineRef.current;
     const anchor = anchorRef.current;
-    if (!headline || !anchor) return false;
+    const baseline = baselineRef.current;
+    if (!headline || !anchor || !baseline) return false;
 
     const headlineRect = headline.getBoundingClientRect();
     const anchorRect = anchor.getBoundingClientRect();
+    const baselineRect = baseline.getBoundingClientRect();
 
     if (headlineRect.height <= 0) return false;
 
+    const height = headlineRect.height * 1.2;
+    const baselineBottom = baselineRect.bottom - anchorRect.top;
+
     setMetrics({
-      top: headlineRect.top - anchorRect.top,
-      height: headlineRect.height,
+      top: baselineBottom - height,
+      height,
     });
     setShow(window.innerWidth >= MIN_VIEWPORT);
     setReady(true);
     return true;
-  }, [headlineRef, anchorRef]);
+  }, [headlineRef, anchorRef, baselineRef]);
 
   useLayoutEffect(() => {
     let raf = 0;
@@ -69,11 +94,13 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
 
       const headline = headlineRef.current;
       const anchor = anchorRef.current;
-      if (!headline || !anchor) return;
+      const baseline = baselineRef.current;
+      if (!headline || !anchor || !baseline) return;
 
       observer = new ResizeObserver(measure);
       observer.observe(headline);
       observer.observe(anchor);
+      observer.observe(baseline);
     };
 
     setup();
@@ -85,7 +112,7 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
       observer?.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, [measure, headlineRef, anchorRef]);
+  }, [measure, headlineRef, anchorRef, baselineRef]);
 
   const cycleLogo = () => {
     setIndex((prev) => (prev + 1) % LOGOS.length);
@@ -94,15 +121,13 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
   if (!show) return null;
 
   const logoHeight =
-    metrics.height > 0
-      ? metrics.height * 1.2
-      : `calc(${FALLBACK_HEIGHT} * 1.2)`;
+    metrics.height > 0 ? metrics.height : `calc(${FALLBACK_HEIGHT} * 1.2)`;
 
   return (
     <div
       className="absolute right-0 z-20 flex flex-col items-end gap-2"
       style={{
-        top: metrics.top > 0 ? metrics.top : undefined,
+        top: metrics.height > 0 ? metrics.top + LOGO_OFFSET_Y : undefined,
         width: "clamp(192px, 26.4vw, 384px)",
       }}
     >
@@ -114,6 +139,22 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
         className="relative w-full cursor-pointer border-0 bg-transparent p-0"
         style={{ height: logoHeight }}
       >
+        {/* Amber glow — centered on logo; see LOGO_GLOW above to tweak */}
+        <div
+          aria-hidden
+          className="absolute pointer-events-none z-0"
+          style={{
+            width: `${LOGO_GLOW.scale * 100}%`,
+            aspectRatio: "1",
+            top: "50%",
+            left: "50%",
+            transform: `translate(calc(-50% + ${LOGO_GLOW.offsetX}px), calc(-50% + ${LOGO_GLOW.offsetY}px))`,
+            borderRadius: "50%",
+            background: `radial-gradient(circle, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.innerOpacity}%, transparent) 0%, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.midOpacity}%, transparent) 30%, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.outerOpacity}%, transparent) 55%, transparent 78%)`,
+            filter: `blur(${LOGO_GLOW.blur}px)`,
+          }}
+        />
+
         {ready && (
           <AnimatePresence mode="wait">
             <motion.div
@@ -122,13 +163,13 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="relative h-full w-full"
+              className="relative z-10 h-full w-full"
             >
               <Image
                 src={LOGOS[index]}
                 alt=""
                 fill
-                className="object-contain object-right"
+                className="object-contain object-right object-bottom"
                 sizes="384px"
                 priority={index === 0}
               />

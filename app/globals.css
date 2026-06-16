@@ -11,12 +11,13 @@
   --font-mono: "DM Mono";
 
   /* Surfaces */
-  --color-bg: #0A0A0A;
-  --color-surface-1: #111111;
-  --color-surface-2: #1A1A1A;
-  --color-surface-3: #242424;
-  --color-border: rgba(245, 240, 232, 0.08);
-  --color-border-strong: rgba(245, 240, 232, 0.16);
+  --color-bg: #111318;             
+  --color-surface-1: #161920;      
+  --color-surface-2: #1E222B;      
+  --color-surface-3: #282E3A;      
+  
+  --color-border: rgba(226, 232, 240, 0.06);
+  --color-border-strong: rgba(226, 232, 240, 0.15);
 
   /* Brand */
   --color-amber: #F5A623;
@@ -43,27 +44,50 @@
 }
 
 [data-theme="light"] {
-  --color-bg: #FFFFFF;
-  --color-surface-1: #F5F5F0;
-  --color-surface-2: #ECEAE3;
-  --color-surface-3: #E0DDD4;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-strong: rgba(0, 0, 0, 0.16);
+  --color-bg: #FDFAF5;
+  --color-surface-1: #F7F3E8;
+  --color-surface-2: #EDE7D0;
+  --color-surface-3: #E2DAC0;
+  --color-border: rgba(0, 0, 0, 0.07);
+  --color-border-strong: rgba(0, 0, 0, 0.15);
 
-  --color-amber: #006600;
-  --color-amber-light: #008800;
-  --color-amber-glow: rgba(0, 102, 0, 0.12);
-  --color-amber-border: rgba(0, 102, 0, 0.3);
-  --color-amber-shadow: rgba(204, 0, 0, 0.2);
-  --color-accent-red: #CC0000;
+  --color-amber: #1B6B3A;
+  --color-amber-light: #2A8A50;
+  --color-amber-glow: rgba(27, 107, 58, 0.10);
+  --color-amber-border: rgba(27, 107, 58, 0.28);
+  --color-amber-shadow: rgba(204, 34, 0, 0.18);
 
-  --color-ink: #111111;
-  --color-ink-secondary: #4A4A4A;
-  --color-ink-muted: #888880;
+  --color-accent-red: #CC2200;
 
-  --color-nav-scrolled-bg: rgba(255, 255, 255, 0.88);
-  --color-hero-glow-inner: rgba(0, 102, 0, 0.1);
-  --color-hero-glow-outer: rgba(0, 102, 0, 0.04);
+  --color-ink: #1A1A0E;
+  --color-ink-secondary: #5A5A4A;
+  --color-ink-muted: #8C8C7A;
+
+  --color-nav-scrolled-bg: rgba(253, 250, 245, 0.92);
+  --color-hero-glow-inner: rgba(27, 107, 58, 0.08);
+  --color-hero-glow-outer: rgba(27, 107, 58, 0.03);
+
+  /* --color-bg: #F5EDD8;
+  --color-surface-1: #E8E0D0;
+  --color-surface-2: #D6CBBA;
+  --color-surface-3: #C4B8A4;
+  --color-border: rgba(0, 0, 0, 0.10);
+  --color-border-strong: rgba(0, 0, 0, 0.22);
+
+  --color-amber: #00693E;
+  --color-amber-light: #00874F;
+  --color-amber-glow: rgba(0, 105, 62, 0.14);
+  --color-amber-border: rgba(0, 105, 62, 0.35);
+  --color-amber-shadow: rgba(200, 0, 30, 0.20);
+  --color-accent-red: #C8001E;
+
+  --color-ink: #0D0D0D;
+  --color-ink-secondary: #3D3D30;
+  --color-ink-muted: #7A7060;
+
+  --color-nav-scrolled-bg: rgba(245, 237, 216, 0.94);
+  --color-hero-glow-inner: rgba(0, 105, 62, 0.10);
+  --color-hero-glow-outer: rgba(0, 105, 62, 0.04); */
 }
 
 /* ─── Reset & Base ───────────────────────────────────────────────────────── */

@@ -77,7 +77,7 @@ const translations = {
       quote:
         "Farol Tech guided us from idea to launch and made every step feel effortless.",
       quote_author:
-        "Cristiano S. - Business Owner"
+        "Cristiano S. Business Owner"
     },
     /* Work */
     work: {
@@ -215,7 +215,7 @@ const translations = {
       quote:
         "A Farol Tech guiou-nos da ideia ao lançamento e tornou cada etapa simples e tranquila.",
       quote_author:
-        "Cristiano S. - Empresário"
+        "Cristiano S. Empresário"
     },
     work: {
       tag: "Projetos em destaque",

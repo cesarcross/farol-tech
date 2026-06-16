@@ -7,13 +7,14 @@ import { RefreshCw } from "lucide-react";
 import { useI18n } from "@/context/i18n";
 
 const LOGOS = [
-  "/l-1.png",
-  "/l-2.png",
-  "/l-3.png",
-  "/l-4.png",
-  "/l-5.png",
-  "/l-6.png",
-  "/l-7.svg",
+  // "/l-1.png",
+  "/farol-bg.png",
+  // "/l-2.png",
+  // "/l-3.png",
+  // "/l-4.png",
+  // "/l-5.png",
+  // "/l-6.png",
+  // "/l-7.svg",
 ] as const;
 
 const MIN_VIEWPORT = 900;
@@ -135,17 +136,17 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
       </button>
 
       {/* Temporary picker control — remove once client chooses a logo */}
-      <button
+      {/* <button
         type="button"
         onClick={cycleLogo}
-        className="flex items-center gap-1.5 text-xs text-[var(--color-ink-muted)] hover:text-[var(--color-amber)] transition-colors"
+        className="flex items-center gap-2 border border-[var(--color-amber)] px-4 py-2.5 text-sm text-[var(--color-ink)] hover:bg-[var(--color-amber)] hover:text-[var(--color-surface-1)] transition-colors"
       >
-        <RefreshCw size={12} strokeWidth={2} />
+        <RefreshCw size={16} strokeWidth={2} />
         {t.hero.change_logo}
-        <span className="font-mono text-[0.625rem] tracking-wider opacity-70">
+        <span className="font-mono text-xs tracking-wider opacity-80">
           {index + 1}/{LOGOS.length}
         </span>
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -23,10 +23,9 @@ const translations = {
       headline2: "digital products",
       headline3: "that shine.",
       subheading:
-        "Farol Tech is a software agency crafting high-performance web apps, SEO-optimised websites, and mobile experiences for ambitious brands.",
+      "Lighting the way forward with websites, apps, and digital solutions that help your business reach more customers.",
       cta_primary: "Start a project",
       cta_secondary: "See our work",
-      scroll_hint: "Scroll to explore",
       change_logo: "Change logo",
       logo_preview: "Logo preview",
     },
@@ -35,46 +34,50 @@ const translations = {
       tag: "What we do",
       headline: "Full-cycle digital craft.",
       subheading:
-        "From pixel-perfect interfaces to scalable backends — we cover the entire product lifecycle.",
+        "We guide your project from idea to launch, helping your business grow with confidence.",
       items: [
         {
-          title: "Web Development",
+          title: "Websites",
           description:
-            "Custom web applications built with React, Next.js, and modern APIs. Fast, maintainable, scalable.",
+            "A modern website that showcases your business and makes it easy for customers to contact you."
         },
         {
-          title: "SEO & Performance",
+          title: "Online Stores",
           description:
-            "Technically flawless sites optimised for search engines, Core Web Vitals, and real-world conversions.",
+            "Start selling your products online with a simple and professional e-commerce website."
         },
         {
-          title: "Mobile Applications",
+          title: "Mobile Apps",
           description:
-            "Cross-platform apps with React Native — native feel, single codebase, launched faster.",
+            "Make it easier for your customers to interact with your business from their phones."
         },
         {
-          title: "CRM & Integrations",
+          title: "Business Systems",
           description:
-            "We connect your tools. HubSpot, Salesforce, custom CRMs — we make your data work for you.",
+            "Custom solutions to organize processes, save time, and make your daily operations easier."
         },
         {
-          title: "E-Commerce",
+          title: "Google Visibility",
           description:
-            "Storefronts that convert. Built on Shopify or fully custom, optimised for revenue.",
+            "Help more people find your business when they search online."
         },
         {
-          title: "Landing Pages & Sites",
+          title: "Dedicated Professionals",
           description:
-            "High-converting landing pages and institutional websites crafted to impress and perform.",
+            "Reliable developers ready to support your team and help deliver projects faster."
         },
       ],
     },
     /* Clients */
     clients: {
       tag: "Trusted by",
-      headline: "Built for industry leaders.",
+      headline: "From local businesses to global brands.",
       subheading:
-        "We've delivered for global brands across entertainment, finance, and media.",
+        "We've helped companies of all sizes build their digital presence, from neighborhood businesses to internationally recognized brands.",
+      quote:
+        "Farol Tech guided us from idea to launch and made every step feel effortless.",
+      quote_author:
+        "Cristiano S. - Business Owner"
     },
     /* Work */
     work: {
@@ -105,7 +108,7 @@ const translations = {
       tag: "Let's talk",
       headline: "Tell us about your project.",
       subheading:
-        "Whether you have a fully-formed brief or just a seed of an idea — we'd love to hear from you.",
+        "Whether you have a detailed plan or just an idea, we'd love to hear about your project.",
       offices: [
         { city: "Lisbon", detail: "CET / WEST" },
         { city: "London", detail: "GMT / BST" },
@@ -160,10 +163,9 @@ const translations = {
       headline2: "produtos digitais",
       headline3: "que brilham.",
       subheading:
-        "A Farol Tech é uma agência de software que desenvolve aplicações web de alto desempenho, sites otimizados para SEO e experiências mobile para marcas ambiciosas.",
+      "Iluminando o caminho para o futuro com sites, aplicativos e soluções digitais que ajudam sua empresa a alcançar mais clientes.",
       cta_primary: "Iniciar projeto",
       cta_secondary: "Ver o nosso trabalho",
-      scroll_hint: "Explorar",
       change_logo: "Mudar logo",
       logo_preview: "Pré-visualização do logo",
     },
@@ -171,17 +173,17 @@ const translations = {
       tag: "O que fazemos",
       headline: "Desenvolvimento digital completo.",
       subheading:
-        "Desde interfaces perfeitas ao pixel a backends escaláveis — cobrimos todo o ciclo de vida do produto.",
+        "Guiamos seu projeto da ideia ao lançamento, ajudando sua empresa a crescer com confiança.",
       items: [
+        {
+          title: "Landing Pages & Sites",
+          description:
+            "Landing pages de alta conversão e sites institucionais criados para impressionar e performar.",
+        },
         {
           title: "Desenvolvimento Web",
           description:
             "Aplicações web personalizadas com React, Next.js e APIs modernas. Rápidas, fáceis de manter e escaláveis.",
-        },
-        {
-          title: "SEO & Performance",
-          description:
-            "Sites tecnicamente impecáveis, otimizados para motores de busca, Core Web Vitals e conversões reais.",
         },
         {
           title: "Aplicações Mobile",
@@ -189,27 +191,31 @@ const translations = {
             "Apps multiplataforma com React Native — experiência nativa, código único, lançamento mais rápido.",
         },
         {
-          title: "CRM & Integrações",
-          description:
-            "Conectamos as suas ferramentas. HubSpot, Salesforce, CRMs personalizados — fazemos os seus dados trabalhar para si.",
-        },
-        {
           title: "E-Commerce",
           description:
             "Lojas que convertem. Construídas em Shopify ou totalmente personalizadas, otimizadas para receita.",
         },
         {
-          title: "Landing Pages & Sites",
+          title: "SEO & Performance",
           description:
-            "Landing pages de alta conversão e sites institucionais criados para impressionar e performar.",
+            "Sites tecnicamente impecáveis, otimizados para motores de busca, Core Web Vitals e conversões reais.",
+        },
+        {
+          title: "Outsourcing",
+          description:
+            "Podes contar com nossos talentos para ampliar o teu time e ajudar-te a alcançar os teus objetivos.",
         },
       ],
     },
     clients: {
       tag: "Parceiros de confiança",
-      headline: "Construído para líderes da indústria.",
+      headline: "De negócios locais a marcas globais.",
       subheading:
-        "Entregámos para marcas globais no entretenimento, finanças e media.",
+        "Ajudamos empresas de todos os portes a construir sua presença digital, desde negócios de bairro até marcas reconhecidas internacionalmente.",
+      quote:
+        "A Farol Tech guiou-nos da ideia ao lançamento e tornou cada etapa simples e tranquila.",
+      quote_author:
+        "Cristiano S. - Empresário"
     },
     work: {
       tag: "Projetos em destaque",
@@ -238,7 +244,7 @@ const translations = {
       tag: "Vamos conversar",
       headline: "Conte-nos sobre o seu projeto.",
       subheading:
-        "Seja um briefing completo ou apenas uma ideia — adoraríamos ouvi-lo.",
+        "Seja um plano detalhado ou apenas uma ideia, gostaríamos de conhecer o seu projeto.",
       offices: [
         { city: "Lisboa", detail: "CET / WEST" },
         { city: "Londres", detail: "GMT / BST" },

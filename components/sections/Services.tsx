@@ -6,14 +6,14 @@ import {
   Globe,
   Search,
   Smartphone,
-  Database,
   ShoppingBag,
   Layout,
+  User
 } from "lucide-react";
 import { useI18n } from "@/context/i18n";
 import { EASE_OUT } from "@/lib/utils";
 
-const ICONS = [Globe, Search, Smartphone, Database, ShoppingBag, Layout];
+const ICONS = [Layout, ShoppingBag, Smartphone, Globe, Search, User];
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -76,11 +76,7 @@ export default function Services() {
                   (e.currentTarget as HTMLElement).style.setProperty("--my", `${y}%`);
                 }}
               >
-                {/* Number */}
-                <span className="label-tag text-[var(--color-ink-muted)] mb-6 block">
-                  0{i + 1}
-                </span>
-
+        
                 {/* Icon */}
                 <div className="mb-5 w-10 h-10 flex items-center justify-center border border-[var(--color-border-strong)] group-hover:border-[var(--color-amber)] transition-colors">
                   <Icon size={18} className="text-[var(--color-amber)]" strokeWidth={1.5} />

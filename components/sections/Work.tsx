@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowUpRight,
@@ -23,6 +24,9 @@ const casesMeta: {
   accentColor: string;
   bgFrom: string;
   bgTo: string;
+  imageSrc?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }[] = [
   {
     slug: "kahu-pet",
@@ -33,6 +37,9 @@ const casesMeta: {
     accentColor: "#F5A623",
     bgFrom: "#1A1200",
     bgTo: "#0A0A0A",
+    imageSrc: "/kahu.png",
+    imageWidth: 529,
+    imageHeight: 220,
   },
   {
     slug: "trail-log",
@@ -43,6 +50,9 @@ const casesMeta: {
     accentColor: "#5DB075",
     bgFrom: "#001A0E",
     bgTo: "#0A0A0A",
+    imageSrc: "/trail.png",
+    imageWidth: 529,
+    imageHeight: 220,
   },
   {
     slug: "crumble-bakery",
@@ -53,6 +63,9 @@ const casesMeta: {
     accentColor: "#E8A87C",
     bgFrom: "#1A0A00",
     bgTo: "#0A0A0A",
+    imageSrc: "/crumble.png",
+    imageWidth: 1408,
+    imageHeight: 768,
   },
   {
     slug: "autoparts-crm",
@@ -63,6 +76,9 @@ const casesMeta: {
     accentColor: "#4A90D9",
     bgFrom: "#00101A",
     bgTo: "#0A0A0A",
+    imageSrc: "/autoparts.png",
+    imageWidth: 529,
+    imageHeight: 220,
   },
 ];
 
@@ -128,6 +144,9 @@ interface WorkCardProps {
   accentColor: string;
   bgFrom: string;
   bgTo: string;
+  imageSrc?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   index: number;
   inView: boolean;
 }
@@ -141,6 +160,9 @@ function WorkCard({
   accentColor,
   bgFrom,
   bgTo,
+  imageSrc,
+  imageWidth,
+  imageHeight,
   index,
   inView,
 }: WorkCardProps) {
@@ -164,7 +186,7 @@ function WorkCard({
         (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
-      {/* Image placeholder */}
+      {/* Image area */}
       <div
         className="relative w-full overflow-hidden"
         style={{
@@ -172,40 +194,53 @@ function WorkCard({
           background: `linear-gradient(135deg, ${bgFrom} 0%, ${bgTo} 100%)`,
         }}
       >
-        {/* Subtle dot-grid texture */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle, ${accentColor}22 1px, transparent 1px)`,
-            backgroundSize: "24px 24px",
-          }}
-        />
-
-        {/* Centered icon placeholder */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className="flex flex-col items-center gap-3"
-            style={{ opacity: 0.55 }}
-          >
+        {imageSrc && imageWidth && imageHeight ? (
+          <Image
+            src={imageSrc}
+            alt={client}
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+            priority={false}
+          />
+        ) : (
+          <>
+            {/* Subtle dot-grid texture */}
             <div
-              className="flex items-center justify-center"
+              className="absolute inset-0"
               style={{
-                width: "64px",
-                height: "64px",
-                border: `2px solid ${accentColor}`,
-                borderRadius: "2px",
+                backgroundImage: `radial-gradient(circle, ${accentColor}22 1px, transparent 1px)`,
+                backgroundSize: "24px 24px",
               }}
-            >
-              <Icon size={28} strokeWidth={1.5} color={accentColor} />
+            />
+
+            {/* Centered icon placeholder */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div
+                className="flex flex-col items-center gap-3"
+                style={{ opacity: 0.55 }}
+              >
+                <div
+                  className="flex items-center justify-center"
+                  style={{
+                    width: "64px",
+                    height: "64px",
+                    border: `2px solid ${accentColor}`,
+                    borderRadius: "2px",
+                  }}
+                >
+                  <Icon size={28} strokeWidth={1.5} color={accentColor} />
+                </div>
+                <span
+                  className="font-mono text-xs tracking-widest uppercase"
+                  style={{ color: accentColor, letterSpacing: "0.18em" }}
+                >
+                  {client}
+                </span>
+              </div>
             </div>
-            <span
-              className="font-mono text-xs tracking-widest uppercase"
-              style={{ color: accentColor, letterSpacing: "0.18em" }}
-            >
-              {client}
-            </span>
-          </div>
-        </div>
+          </>
+        )}
 
         {/* Accent corner line */}
         <div

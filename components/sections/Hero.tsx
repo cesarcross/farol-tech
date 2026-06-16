@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import LogoPlaceholder from "@/components/LogoPlaceholder";
 import { useI18n } from "@/context/i18n";
 import { EASE_OUT } from "@/lib/utils";
@@ -23,8 +23,6 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const heroAnchorRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
@@ -59,10 +57,7 @@ export default function Hero() {
         }}
       />
 
-      <motion.div
-        style={{ opacity }}
-        className="container-custom relative z-10 pt-28 pb-20 md:pt-36"
-      >
+      <div className="container-custom relative z-10 pt-28 pb-20 md:pt-36">
         <div ref={heroAnchorRef} className="relative">
         <motion.div
           variants={stagger.container}
@@ -111,53 +106,35 @@ export default function Hero() {
         </div>
 
         {/* Stats row */}
-        <motion.div
-          variants={stagger.container}
-          initial="hidden"
-          animate="show"
-          className="mt-20 md:mt-28 grid grid-cols-3 gap-px border border-[var(--color-border)] max-w-lg"
-        >
-          {[
-            { value: "8+", label: "Years" },
-            { value: "60+", label: "Projects" },
-            { value: "3", label: "Continents" },
-          ].map((stat) => (
-            <motion.div
-              key={stat.label}
-              variants={stagger.item}
-              className="flex flex-col items-center py-5 bg-[var(--color-surface-1)]"
-            >
-              <span
-                className="font-display text-3xl md:text-4xl font-light text-[var(--color-amber)]"
-                style={{ fontFamily: "var(--font-display)" }}
+          {/* <motion.div
+            variants={stagger.container}
+            initial="hidden"
+            animate="show"
+            className="mt-20 md:mt-28 grid grid-cols-3 gap-px border border-[var(--color-border)] max-w-lg"
+          >
+            {[
+              { value: "8+", label: "Years" },
+              { value: "60+", label: "Projects" },
+              { value: "3", label: "Continents" },
+            ].map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={stagger.item}
+                className="flex flex-col items-center py-5 bg-[var(--color-surface-1)]"
               >
-                {stat.value}
-              </span>
-              <span className="label-tag mt-1 text-[var(--color-ink-muted)]">
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="label-tag text-[var(--color-ink-muted)]">
-          {t.hero.scroll_hint}
-        </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-        >
-          <ChevronDown size={16} className="text-[var(--color-amber)]" />
-        </motion.div>
-      </motion.div>
+                <span
+                  className="font-display text-3xl md:text-4xl font-light text-[var(--color-amber)]"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {stat.value}
+                </span>
+                <span className="label-tag mt-1 text-[var(--color-ink-muted)]">
+                  {stat.label}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div> */}
+      </div>
     </section>
   );
 }

@@ -25,7 +25,7 @@ const buildSchema = (v: {
 type FormData = z.infer<ReturnType<typeof buildSchema>>;
 
 /* WhatsApp number — update as needed */
-const WA_NUMBER = "5511999999999"; // Brazil format: countrycode + number
+const WA_NUMBER = "351918738888"; 
 
 export default function Contact() {
   const { t } = useI18n();

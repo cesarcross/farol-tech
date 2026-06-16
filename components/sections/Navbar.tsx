@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useI18n, type Locale } from "@/context/i18n";
@@ -83,7 +84,14 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 group" aria-label="Farol Tech home">
-              <BeaconIcon />
+              <Image
+                src="/farol-bg.png"
+                alt=""
+                width={28}
+                height={28}
+                className="h-7 w-7 object-contain"
+                priority
+              />
               <span
                 className="font-display text-xl font-light tracking-wide text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}

@@ -3,7 +3,6 @@
 import { useCallback, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { RefreshCw } from "lucide-react";
 import { useI18n } from "@/context/i18n";
 
 const LOGOS = [
@@ -94,14 +93,17 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
 
   if (!show) return null;
 
-  const logoHeight = metrics.height > 0 ? metrics.height : FALLBACK_HEIGHT;
+  const logoHeight =
+    metrics.height > 0
+      ? metrics.height * 1.2
+      : `calc(${FALLBACK_HEIGHT} * 1.2)`;
 
   return (
     <div
       className="absolute right-0 z-20 flex flex-col items-end gap-2"
       style={{
         top: metrics.top > 0 ? metrics.top : undefined,
-        width: "clamp(160px, 22vw, 320px)",
+        width: "clamp(192px, 26.4vw, 384px)",
       }}
     >
       {/* Logo — fills headline height, no visible container */}
@@ -127,7 +129,7 @@ export default function LogoPlaceholder({ headlineRef, anchorRef }: LogoPlacehol
                 alt=""
                 fill
                 className="object-contain object-right"
-                sizes="320px"
+                sizes="384px"
                 priority={index === 0}
               />
             </motion.div>

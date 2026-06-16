@@ -31,6 +31,7 @@
   --color-ink: #F5F0E8;
   --color-ink-secondary: #A8A090;
   --color-ink-muted: #5C5650;
+  --color-ink-subtle: var(--color-ink);
 
   /* Nav & effects */
   --color-nav-scrolled-bg: rgba(10, 10, 10, 0.88);
@@ -62,6 +63,7 @@
   --color-ink: #1A1A0E;
   --color-ink-secondary: #5A5A4A;
   --color-ink-muted: #8C8C7A;
+  --color-ink-subtle: var(--color-ink-muted);
 
   --color-nav-scrolled-bg: rgba(253, 250, 245, 0.92);
   --color-hero-glow-inner: rgba(27, 107, 58, 0.08);

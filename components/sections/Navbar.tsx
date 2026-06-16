@@ -88,7 +88,7 @@ export default function Navbar() {
                 className="font-display text-xl font-light tracking-wide text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Farol<span className="text-[var(--color-amber)]">.</span>
+                Farol Tech
               </span>
             </a>
 

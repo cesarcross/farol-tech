@@ -27,6 +27,8 @@ const casesMeta: {
   imageSrc?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageFit?: "cover" | "contain";
+  imageBg?: string;
 }[] = [
   {
     slug: "kahu-pet",
@@ -66,6 +68,8 @@ const casesMeta: {
     imageSrc: "/crumble.png",
     imageWidth: 1408,
     imageHeight: 768,
+    imageFit: "contain",
+    imageBg: "#F8EDE3",
   },
   {
     slug: "autoparts-crm",
@@ -76,9 +80,11 @@ const casesMeta: {
     accentColor: "#4A90D9",
     bgFrom: "#00101A",
     bgTo: "#0A0A0A",
-    imageSrc: "/autoparts.png",
-    imageWidth: 529,
-    imageHeight: 220,
+    imageSrc: "/auto.png",
+    imageWidth: 1408,
+    imageHeight: 768,
+    imageFit: "contain",
+    imageBg: "#EBEFEF",
   },
 ];
 
@@ -147,6 +153,8 @@ interface WorkCardProps {
   imageSrc?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imageFit?: "cover" | "contain";
+  imageBg?: string;
   index: number;
   inView: boolean;
 }
@@ -163,6 +171,8 @@ function WorkCard({
   imageSrc,
   imageWidth,
   imageHeight,
+  imageFit = "cover",
+  imageBg,
   index,
   inView,
 }: WorkCardProps) {
@@ -191,18 +201,32 @@ function WorkCard({
         className="relative w-full overflow-hidden"
         style={{
           height: "220px",
-          background: `linear-gradient(135deg, ${bgFrom} 0%, ${bgTo} 100%)`,
+          background: imageBg ?? `linear-gradient(135deg, ${bgFrom} 0%, ${bgTo} 100%)`,
         }}
       >
         {imageSrc && imageWidth && imageHeight ? (
-          <Image
-            src={imageSrc}
-            alt={client}
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            style={{ objectFit: "cover", objectPosition: "center top" }}
-            priority={false}
-          />
+          imageFit === "contain" ? (
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              <Image
+                src={imageSrc}
+                alt={client}
+                width={imageWidth}
+                height={imageHeight}
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="max-h-full max-w-full object-contain"
+                priority={false}
+              />
+            </div>
+          ) : (
+            <Image
+              src={imageSrc}
+              alt={client}
+              fill
+              sizes="(max-width: 640px) 100vw, 50vw"
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              priority={false}
+            />
+          )
         ) : (
           <>
             {/* Subtle dot-grid texture */}

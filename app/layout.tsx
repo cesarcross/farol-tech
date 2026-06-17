@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/context/i18n";
-import { ThemeProvider } from "@/context/theme";
 import { seo, siteConfig } from "@/lib/seo";
 
 const jsonLd = {
@@ -106,13 +105,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <I18nProvider>
-            {/* Noise grain overlay for texture */}
-            <div className="noise-overlay" aria-hidden="true" />
-            {children}
-          </I18nProvider>
-        </ThemeProvider>
+        <I18nProvider>
+          {/* Noise grain overlay for texture */}
+          <div className="noise-overlay" aria-hidden="true" />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

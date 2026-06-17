@@ -10,7 +10,7 @@ export const seo = {
   title: "Farol Tech — We build digital products that shine.",
   shortTitle: "Farol Tech",
   description:
-    "Lighting the way forward with websites, apps, and digital solutions that help your business reach more customers. Digital agency in Lisbon & London.",
+    "Lighting the way forward. Digital agency in Lisbon & London.",
   tagline: "Digital Agency · Lisbon & London",
   headline: "We build digital products that shine.",
   keywords: [

@@ -25,7 +25,6 @@
   --color-amber-glow: rgba(245, 166, 35, 0.15);
   --color-amber-border: rgba(245, 166, 35, 0.3);
   --color-amber-shadow: rgba(245, 166, 35, 0.25);
-  --color-accent-red: transparent;
 
   /* Ink */
   --color-ink: #F5F0E8;
@@ -43,55 +42,6 @@
   --section-py: clamp(5rem, 10vw, 9rem);
   --container-px: clamp(1.25rem, 5vw, 3rem);
   --max-width: 1280px;
-}
-
-[data-theme="light"] {
-  --color-bg: #FDFAF5;
-  --color-surface-1: #F7F3E8;
-  --color-surface-2: #EDE7D0;
-  --color-surface-3: #E2DAC0;
-  --color-border: rgba(0, 0, 0, 0.07);
-  --color-border-strong: rgba(0, 0, 0, 0.15);
-
-  --color-amber: #1B6B3A;
-  --color-amber-light: #2A8A50;
-  --color-amber-glow: rgba(27, 107, 58, 0.10);
-  --color-amber-border: rgba(27, 107, 58, 0.28);
-  --color-amber-shadow: rgba(204, 34, 0, 0.18);
-
-  --color-accent-red: #CC2200;
-
-  --color-ink: #1A1A0E;
-  --color-ink-secondary: #5A5A4A;
-  --color-ink-muted: #8C8C7A;
-  --color-ink-subtle: var(--color-ink-muted);
-  --color-placeholder: color-mix(in srgb, var(--color-ink) 50%, transparent);
-
-  --color-nav-scrolled-bg: rgba(253, 250, 245, 0.92);
-  --color-hero-glow-inner: rgba(27, 107, 58, 0.08);
-  --color-hero-glow-outer: rgba(27, 107, 58, 0.03);
-
-  /* --color-bg: #F5EDD8;
-  --color-surface-1: #E8E0D0;
-  --color-surface-2: #D6CBBA;
-  --color-surface-3: #C4B8A4;
-  --color-border: rgba(0, 0, 0, 0.10);
-  --color-border-strong: rgba(0, 0, 0, 0.22);
-
-  --color-amber: #00693E;
-  --color-amber-light: #00874F;
-  --color-amber-glow: rgba(0, 105, 62, 0.14);
-  --color-amber-border: rgba(0, 105, 62, 0.35);
-  --color-amber-shadow: rgba(200, 0, 30, 0.20);
-  --color-accent-red: #C8001E;
-
-  --color-ink: #0D0D0D;
-  --color-ink-secondary: #3D3D30;
-  --color-ink-muted: #7A7060;
-
-  --color-nav-scrolled-bg: rgba(245, 237, 216, 0.94);
-  --color-hero-glow-inner: rgba(0, 105, 62, 0.10);
-  --color-hero-glow-outer: rgba(0, 105, 62, 0.04); */
 }
 
 /* ─── Reset & Base ───────────────────────────────────────────────────────── */
@@ -297,13 +247,6 @@ body {
 }
 .btn-primary:active {
   transform: translateY(0);
-}
-
-[data-theme="light"] .btn-primary {
-  background: var(--color-accent-red);
-}
-[data-theme="light"] .btn-primary:hover {
-  background: #E60000;
 }
 
 .btn-ghost {

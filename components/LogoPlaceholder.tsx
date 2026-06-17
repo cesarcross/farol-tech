@@ -7,7 +7,8 @@ import { useI18n } from "@/context/i18n";
 
 const LOGOS = [
   // "/l-1.png",
-  "/farol-bg.png",
+  // "/farol-bg.png",
+  "/rei.png",
   // "/l-2.png",
   // "/l-3.png",
   // "/l-4.png",
@@ -18,7 +19,7 @@ const LOGOS = [
 
 const MIN_VIEWPORT = 900;
 
-const LOGO_OFFSET_Y = -20;
+const LOGO_OFFSET_Y = -10;
 
 /**
  * Hero logo glow — tweak here for manual tests.
@@ -28,14 +29,30 @@ const LOGO_OFFSET_Y = -20;
  * blur: soft edge in px
  */
 const LOGO_GLOW = {
-  scale: 1.01,
-  offsetX: 0,
-  offsetY: -18,
+  scale: 1.212,
+  offsetX: 22,
+  offsetY: -38,
   innerOpacity: 38,
   midOpacity: 20,
   outerOpacity: 8,
   blur: 3,
 } as const;
+
+/** Hover multiplier — tweak to adjust glow boost on logo hover */
+const LOGO_GLOW_HOVER_MULTIPLIER = 1.5;
+
+const getLogoGlow = (hovered: boolean) => {
+  const m = hovered ? LOGO_GLOW_HOVER_MULTIPLIER : 1;
+  return {
+    scale: LOGO_GLOW.scale * m,
+    offsetX: LOGO_GLOW.offsetX,
+    offsetY: LOGO_GLOW.offsetY,
+    innerOpacity: Math.min(LOGO_GLOW.innerOpacity * m, 100),
+    midOpacity: Math.min(LOGO_GLOW.midOpacity * m, 100),
+    outerOpacity: Math.min(LOGO_GLOW.outerOpacity * m, 100),
+    blur: LOGO_GLOW.blur * m,
+  };
+};
 
 /** Matches .display-xl: 3 lines × line-height 0.95 */
 const FALLBACK_HEIGHT = "calc(3 * clamp(3.5rem, 9vw, 8rem) * 0.95)";
@@ -57,6 +74,7 @@ export default function LogoPlaceholder({ headlineRef, anchorRef, baselineRef }:
   const [metrics, setMetrics] = useState<LayoutMetrics>({ top: 0, height: 0 });
   const [ready, setReady] = useState(false);
   const [show, setShow] = useState(false);
+  const [glowHovered, setGlowHovered] = useState(false);
 
   const measure = useCallback(() => {
     const headline = headlineRef.current;
@@ -123,6 +141,8 @@ export default function LogoPlaceholder({ headlineRef, anchorRef, baselineRef }:
   const logoHeight =
     metrics.height > 0 ? metrics.height : `calc(${FALLBACK_HEIGHT} * 1.2)`;
 
+  const glow = getLogoGlow(glowHovered);
+
   return (
     <div
       className="absolute right-0 z-20 flex flex-col items-end gap-2"
@@ -135,23 +155,25 @@ export default function LogoPlaceholder({ headlineRef, anchorRef, baselineRef }:
       <button
         type="button"
         onClick={cycleLogo}
+        onMouseEnter={() => setGlowHovered(true)}
+        onMouseLeave={() => setGlowHovered(false)}
         aria-label={t.hero.logo_preview}
-        className="relative w-full cursor-pointer border-0 bg-transparent p-0"
+        className="group relative w-full cursor-pointer border-0 bg-transparent p-0"
         style={{ height: logoHeight }}
       >
         {/* Amber glow — centered on logo; see LOGO_GLOW above to tweak */}
         <div
           aria-hidden
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none z-0 transition-all duration-300 ease-out"
           style={{
-            width: `${LOGO_GLOW.scale * 100}%`,
+            width: `${glow.scale * 100}%`,
             aspectRatio: "1",
             top: "50%",
             left: "50%",
-            transform: `translate(calc(-50% + ${LOGO_GLOW.offsetX}px), calc(-50% + ${LOGO_GLOW.offsetY}px))`,
+            transform: `translate(calc(-50% + ${glow.offsetX}px), calc(-50% + ${glow.offsetY}px))`,
             borderRadius: "50%",
-            background: `radial-gradient(circle, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.innerOpacity}%, transparent) 0%, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.midOpacity}%, transparent) 30%, color-mix(in srgb, var(--color-amber) ${LOGO_GLOW.outerOpacity}%, transparent) 55%, transparent 78%)`,
-            filter: `blur(${LOGO_GLOW.blur}px)`,
+            background: `radial-gradient(circle, color-mix(in srgb, var(--color-amber) ${glow.innerOpacity}%, transparent) 0%, color-mix(in srgb, var(--color-amber) ${glow.midOpacity}%, transparent) 30%, color-mix(in srgb, var(--color-amber) ${glow.outerOpacity}%, transparent) 55%, transparent 78%)`,
+            filter: `blur(${glow.blur}px)`,
           }}
         />
 

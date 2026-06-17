@@ -24,6 +24,10 @@ const itemVariants = {
   }),
 };
 
+const scrollToContact = () => {
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+};
+
 export default function Services() {
   const { t } = useI18n();
   const ref = useRef<HTMLDivElement>(null);
@@ -67,7 +71,16 @@ export default function Services() {
                 variants={itemVariants}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
-                className="service-card group p-8 md:p-10 cursor-default"
+                role="button"
+                tabIndex={0}
+                className="service-card group p-8 md:p-10 cursor-pointer"
+                onClick={scrollToContact}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    scrollToContact();
+                  }
+                }}
                 onMouseMove={(e) => {
                   const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
                   const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -96,7 +109,7 @@ export default function Services() {
                 {/* Arrow hint */}
                 <div className="mt-6 flex items-center gap-2 text-xs font-mono tracking-wider text-[var(--color-ink-muted)] group-hover:text-[var(--color-amber)] transition-colors">
                   <span className="inline-block w-5 h-px bg-current transition-all group-hover:w-8" />
-                  <span>Learn more</span>
+                  <span>{t.services.learn_more}</span>
                 </div>
               </motion.div>
             );

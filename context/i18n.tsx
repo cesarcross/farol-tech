@@ -35,6 +35,7 @@ const translations = {
       headline: "Full-cycle digital craft.",
       subheading:
         "We guide your project from idea to launch, helping your business grow with confidence.",
+      learn_more: "Learn more",
       items: [
         {
           title: "Websites",
@@ -112,7 +113,6 @@ const translations = {
       offices: [
         { city: "Lisbon", detail: "CET / WEST" },
         { city: "London", detail: "GMT / BST" },
-        { city: "São Paulo", detail: "BRT" },
       ],
       form: {
         name_label: "Your name",
@@ -141,7 +141,6 @@ const translations = {
       offices: "Offices",
       lisbon: "Lisbon, Portugal",
       london: "London, United Kingdom",
-      sao_paulo: "São Paulo, Brazil",
       links_label: "Navigation",
       legal: "All rights reserved.",
       privacy: "Privacy Policy",
@@ -163,7 +162,7 @@ const translations = {
       headline2: "produtos digitais",
       headline3: "que brilham.",
       subheading:
-      "Iluminando o caminho para o futuro com sites, aplicativos e soluções digitais que ajudam sua empresa a alcançar mais clientes.",
+      "Iluminando o vosso caminho através de websites, aplicativos e soluções digitais que ajudam vossa empresa a vender mais e com eficácia.",
       cta_primary: "Iniciar projeto",
       cta_secondary: "Ver o nosso trabalho",
       change_logo: "Mudar logo",
@@ -174,6 +173,7 @@ const translations = {
       headline: "Desenvolvimento digital completo.",
       subheading:
         "Guiamos seu projeto da ideia ao lançamento, ajudando sua empresa a crescer com confiança.",
+      learn_more: "Saiba mais",
       items: [
         {
           title: "Landing Pages & Sites",
@@ -242,13 +242,12 @@ const translations = {
     },
     contact: {
       tag: "Vamos conversar",
-      headline: "Conte-nos sobre o seu projeto.",
+      headline: "Conte-nos sobre vosso projeto.",
       subheading:
         "Seja um plano detalhado ou apenas uma ideia, gostaríamos de conhecer o seu projeto.",
       offices: [
         { city: "Lisboa", detail: "CET / WEST" },
         { city: "Londres", detail: "GMT / BST" },
-        { city: "São Paulo", detail: "BRT" },
       ],
       form: {
         name_label: "O seu nome",
@@ -257,7 +256,7 @@ const translations = {
         phone_placeholder: "+351 910 000 000",
         message_label: "Conte-nos sobre o projeto",
         message_placeholder:
-          "Descreva o que quer construir, o prazo e qualquer detalhe importante…",
+          "Descreva o que pretende construir e nós criamos para si.",
         submit: "Enviar mensagem",
         whatsapp: "Falar no WhatsApp",
         success: "Mensagem enviada! Entraremos em contacto em 24 horas.",
@@ -276,7 +275,6 @@ const translations = {
       offices: "Escritórios",
       lisbon: "Lisboa, Portugal",
       london: "Londres, Reino Unido",
-      sao_paulo: "São Paulo, Brasil",
       links_label: "Navegação",
       legal: "Todos os direitos reservados.",
       privacy: "Política de Privacidade",

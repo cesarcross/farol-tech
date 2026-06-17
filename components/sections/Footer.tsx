@@ -63,10 +63,6 @@ export default function Footer() {
                 <span className="text-[var(--color-amber)]">→</span>
                 {t.footer.london}
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-[var(--color-amber)]">→</span>
-                {t.footer.sao_paulo}
-              </li>
             </ul>
           </div>
 

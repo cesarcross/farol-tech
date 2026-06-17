@@ -83,17 +83,41 @@ export default function Navbar() {
         <div className="container-custom">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group" aria-label="Farol Tech home">
-              <Image
-                src="/farol-bg.png"
-                alt=""
-                width={28}
-                height={28}
-                className="h-7 w-7 object-contain"
-                priority
-              />
+            <a
+              href="#"
+              className="relative flex items-center gap-3 overflow-visible group/logo"
+              aria-label="Farol Tech home"
+            >
+              <svg
+                className="nav-logo-beam"
+                viewBox="0 0 240 28"
+                fill="none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="nav-beam-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                    <stop offset="0%" stopColor="var(--color-amber)" stopOpacity="0.92" />
+                    <stop offset="35%" stopColor="var(--color-amber)" stopOpacity="0.55" />
+                    <stop offset="65%" stopColor="var(--color-amber)" stopOpacity="0.22" />
+                    <stop offset="88%" stopColor="var(--color-amber)" stopOpacity="0.07" />
+                    <stop offset="100%" stopColor="var(--color-amber)" stopOpacity="0.02" />
+                  </linearGradient>
+                </defs>
+                <polygon points="0,14 240,0 240,28" fill="url(#nav-beam-gradient)" />
+              </svg>
+              <div className="relative z-10 h-7 w-7 shrink-0">
+                <Image
+                  src="/rei.png"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className="h-7 w-7 object-contain"
+                  priority
+                />
+              </div>
               <span
-                className="font-display text-xl font-light tracking-wide text-[var(--color-ink)]"
+                className="relative z-10 font-display text-xl font-light tracking-wide text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Farol Tech

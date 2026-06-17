@@ -11,10 +11,10 @@
   --font-mono: "DM Mono";
 
   /* Surfaces */
-  --color-bg: #111318;             
-  --color-surface-1: #161920;      
-  --color-surface-2: #1E222B;      
-  --color-surface-3: #282E3A;      
+  --color-bg: #0A172B;             
+  --color-surface-1: #162740;      
+  --color-surface-2: #1c304c;      
+  --color-surface-3: #162740;      
   
   --color-border: rgba(226, 232, 240, 0.06);
   --color-border-strong: rgba(226, 232, 240, 0.15);
@@ -32,6 +32,7 @@
   --color-ink-secondary: #A8A090;
   --color-ink-muted: #5C5650;
   --color-ink-subtle: var(--color-ink);
+  --color-placeholder: color-mix(in srgb, var(--color-ink) 60%, transparent);
 
   /* Nav & effects */
   --color-nav-scrolled-bg: rgba(10, 10, 10, 0.88);
@@ -64,6 +65,7 @@
   --color-ink-secondary: #5A5A4A;
   --color-ink-muted: #8C8C7A;
   --color-ink-subtle: var(--color-ink-muted);
+  --color-placeholder: color-mix(in srgb, var(--color-ink) 50%, transparent);
 
   --color-nav-scrolled-bg: rgba(253, 250, 245, 0.92);
   --color-hero-glow-inner: rgba(27, 107, 58, 0.08);
@@ -217,6 +219,24 @@ body {
   100% { transform: scale(2.4); opacity: 0; }
 }
 
+/* ─── Nav logo searchlight beam ─────────────────────────────────────────── */
+/* Tweak: left/top = origin at lighthouse lantern; width/height = reach & spread */
+.nav-logo-beam {
+  position: absolute;
+  z-index: 0;
+  top: 0.1rem;
+  left: 0.85rem;
+  width: calc(100% - 0.5rem);
+  height: 1.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  filter: blur(0.75px);
+}
+.group\/logo:hover .nav-logo-beam {
+  opacity: 1;
+}
+
 /* ─── Marquee ────────────────────────────────────────────────────────────── */
 .marquee-track {
   display: flex;
@@ -321,7 +341,7 @@ body {
   -webkit-appearance: none;
 }
 .form-field::placeholder {
-  color: var(--color-ink-muted);
+  color: var(--color-placeholder);
 }
 .form-field:focus {
   border-color: var(--color-amber);

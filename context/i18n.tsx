@@ -1,8 +1,49 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
+import {
+  LOCALE_STORAGE_KEY,
+  resolveLocale,
+  type Locale,
+} from "@/lib/locale";
 
-export type Locale = "en" | "pt";
+export type { Locale };
+
+const LOCALE_CHANGE = "farol-locale-change";
+
+function getLocaleSnapshot(): Locale {
+  return resolveLocale(localStorage.getItem(LOCALE_STORAGE_KEY));
+}
+
+function getServerSnapshot(): Locale {
+  return "en";
+}
+
+function subscribe(onStoreChange: () => void) {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === LOCALE_STORAGE_KEY) onStoreChange();
+  };
+  const onLocaleChange = () => onStoreChange();
+
+  window.addEventListener("storage", onStorage);
+  window.addEventListener(LOCALE_CHANGE, onLocaleChange);
+
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    window.removeEventListener(LOCALE_CHANGE, onLocaleChange);
+  };
+}
+
+function persistLocale(locale: Locale) {
+  localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  window.dispatchEvent(new Event(LOCALE_CHANGE));
+}
 
 /* ─── Translation dictionary ─────────────────────────────────────────────── */
 const translations = {
@@ -14,7 +55,6 @@ const translations = {
       clients: "Clients",
       contact: "Contact",
       cta: "Get in touch",
-      toggleTheme: "Toggle theme",
     },
     /* Hero */
     hero: {
@@ -111,28 +151,36 @@ const translations = {
       subheading:
         "Whether you have a detailed plan or just an idea, we'd love to hear about your project.",
       offices: [
-        { city: "Lisbon", detail: "CET / WEST" },
-        { city: "London", detail: "GMT / BST" },
+        { city: "Lisbon", phone: "+351 928 459 611",  detail: "CET / WEST" },
+        { city: "London", phone: "+44 74 6748 0605", detail: "GMT / BST" },
       ],
       form: {
         name_label: "Your name",
         name_placeholder: "Jane Smith",
+        email_label: "Your email",
+        email_placeholder: "jane@example.com",
         phone_label: "Phone / WhatsApp",
         phone_placeholder: "+351 910 000 000",
         message_label: "Tell us about your project",
         message_placeholder:
           "Describe what you're looking to build, your timeline, and anything else that's important…",
         submit: "Send message",
+        sending: "Sending…",
+        wait_seconds: "Please wait {{seconds}}s",
         whatsapp: "Chat on WhatsApp",
         success: "Message sent! We'll be in touch within 24 hours.",
         error: "Something went wrong. Please try again or message us on WhatsApp.",
+        rate_limit: "Too many messages. Please wait a moment before trying again.",
+        modal_close: "Close",
       },
       validation: {
         name_required: "Name is required",
         name_min: "Name must be at least 2 characters",
+        email_required: "Email is required",
+        email_invalid: "Please enter a valid email address",
         phone_required: "Phone number is required",
         message_required: "Message is required",
-        message_min: "Tell us a bit more (at least 20 characters)",
+        message_min: "Tell us a bit more (at least 10 characters)",
       },
     },
     /* Footer */
@@ -142,6 +190,9 @@ const translations = {
       lisbon: "Lisbon, Portugal",
       london: "London, United Kingdom",
       links_label: "Navigation",
+      services: "Services",
+      clients: "Clients",
+      contact: "Contact",
       legal: "All rights reserved.",
       privacy: "Privacy Policy",
     },
@@ -149,12 +200,11 @@ const translations = {
 
   pt: {
     nav: {
-      services: "Serviços",
-      work: "Projetos",
+      services: "Nossos Serviços",
+      work: "Portefólio",
       clients: "Clientes",
       contact: "Contacto",
       cta: "Fale connosco",
-      toggleTheme: "Alternar tema",
     },
     hero: {
       tag: "Agência Digital · Lisboa & Londres",
@@ -162,7 +212,7 @@ const translations = {
       headline2: "produtos digitais",
       headline3: "que brilham.",
       subheading:
-      "Iluminando o vosso caminho através de websites, aplicativos e soluções digitais que ajudam vossa empresa a vender mais e com eficácia.",
+      "Iluminamos o caminho através de websites, aplicativos e soluções digitais que ajudam vossa empresa a vender mais e com eficácia.",
       cta_primary: "Iniciar projeto",
       cta_secondary: "Ver o nosso trabalho",
       change_logo: "Mudar logo",
@@ -242,32 +292,40 @@ const translations = {
     },
     contact: {
       tag: "Vamos conversar",
-      headline: "Conte-nos sobre vosso projeto.",
+      headline: "O que pretendes construir? Nós criamos para sí!",
       subheading:
         "Seja um plano detalhado ou apenas uma ideia, gostaríamos de conhecer o seu projeto.",
       offices: [
-        { city: "Lisboa", detail: "CET / WEST" },
-        { city: "Londres", detail: "GMT / BST" },
+        { city: "Lisboa", phone: "+351 928 459 611", detail: "CET / WEST" },
+        { city: "Londres", phone: "+44 74 6748 0605", detail: "GMT / BST" },
       ],
       form: {
         name_label: "O seu nome",
         name_placeholder: "João Silva",
+        email_label: "O seu email",
+        email_placeholder: "joao@exemplo.com",
         phone_label: "Telefone / WhatsApp",
         phone_placeholder: "+351 910 000 000",
         message_label: "Conte-nos sobre o projeto",
         message_placeholder:
           "Descreva o que pretende construir e nós criamos para si.",
         submit: "Enviar mensagem",
+        sending: "A enviar…",
+        wait_seconds: "Aguarde {{seconds}}s",
         whatsapp: "Falar no WhatsApp",
         success: "Mensagem enviada! Entraremos em contacto em 24 horas.",
         error: "Algo correu mal. Por favor tente novamente ou contacte-nos pelo WhatsApp.",
+        rate_limit: "Demasiadas mensagens. Por favor aguarde um momento antes de tentar novamente.",
+        modal_close: "Fechar",
       },
       validation: {
         name_required: "Nome é obrigatório",
         name_min: "O nome deve ter pelo menos 2 caracteres",
+        email_required: "Email é obrigatório",
+        email_invalid: "Por favor introduza um email válido",
         phone_required: "Número de telefone é obrigatório",
         message_required: "Mensagem é obrigatória",
-        message_min: "Diga-nos um pouco mais (pelo menos 20 caracteres)",
+        message_min: "Diga-nos um pouco mais (pelo menos 10 caracteres)",
       },
     },
     footer: {
@@ -276,6 +334,9 @@ const translations = {
       lisbon: "Lisboa, Portugal",
       london: "Londres, Reino Unido",
       links_label: "Navegação",
+      services: "Serviços",
+      clients: "Clientes",
+      contact: "Contacto",
       legal: "Todos os direitos reservados.",
       privacy: "Política de Privacidade",
     },
@@ -295,7 +356,20 @@ interface I18nContextValue {
 const I18nContext = createContext<I18nContextValue | null>(null);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const locale = useSyncExternalStore(
+    subscribe,
+    getLocaleSnapshot,
+    getServerSnapshot
+  );
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
+  const setLocale = useCallback((next: Locale) => {
+    persistLocale(next);
+  }, []);
+
   return (
     <I18nContext.Provider
       value={{ locale, setLocale, t: translations[locale] }}

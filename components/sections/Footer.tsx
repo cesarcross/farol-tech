@@ -73,9 +73,9 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {[
-                { href: "#services", label: "Services" },
-                { href: "#clients", label: "Clients" },
-                { href: "#contact", label: "Contact" },
+                { href: "#services", label: t.footer.services },
+                { href: "#clients", label: t.footer.clients },
+                { href: "#contact", label: t.footer.contact },
               ].map((link) => (
                 <li key={link.href}>
                   <a

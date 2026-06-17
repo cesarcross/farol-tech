@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useI18n, type Locale } from "@/context/i18n";
-import { useTheme } from "@/context/theme";
 
 /* Flag SVGs inlined to avoid external deps */
 const FlagEN = () => (
@@ -36,7 +35,6 @@ const switcherBtnClass =
 
 export default function Navbar() {
   const { t, locale, setLocale } = useI18n();
-  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -135,15 +133,6 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              {/* Theme toggle */}
-              <button
-                onClick={toggleTheme}
-                className={`${switcherBtnClass} hidden md:flex justify-center w-[34px] px-0`}
-                aria-label={t.nav.toggleTheme}
-              >
-                {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
-              </button>
-
               {/* Language switcher */}
               <div ref={langRef} className="relative hidden md:block">
                 <button
@@ -226,15 +215,7 @@ export default function Navbar() {
               ))}
             </nav>
             <div className="mt-auto flex flex-col gap-3">
-              {/* Mobile language & theme */}
               <div className="flex gap-2">
-                <button
-                  onClick={toggleTheme}
-                  className={`${switcherBtnClass} px-3 py-2`}
-                  aria-label={t.nav.toggleTheme}
-                >
-                  {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
-                </button>
                 {LOCALES.map((l) => (
                   <button
                     key={l.code}

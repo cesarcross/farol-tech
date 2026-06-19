@@ -74,13 +74,6 @@ export default function ContactStatusModal({
           aria-modal="true"
           aria-live="polite"
         >
-          <button
-            type="button"
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={onClose}
-            aria-label={closeLabel}
-          />
-
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

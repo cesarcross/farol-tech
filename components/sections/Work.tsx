@@ -29,10 +29,12 @@ const casesMeta: {
   imageHeight?: number;
   imageFit?: "cover" | "contain";
   imageBg?: string;
+  href?: string;
 }[] = [
   {
     slug: "kahu-pet",
     client: "Kahu Pet",
+    href: "https://kahupet.vercel.app/",
     sector: "Pet Care · Mobile App",
     tags: ["React Native", "Node.js", "Push Notifications"],
     Icon: PawPrint,
@@ -155,6 +157,7 @@ interface WorkCardProps {
   imageHeight?: number;
   imageFit?: "cover" | "contain";
   imageBg?: string;
+  href?: string;
   index: number;
   inView: boolean;
 }
@@ -173,15 +176,25 @@ function WorkCard({
   imageHeight,
   imageFit = "cover",
   imageBg,
+  href,
   index,
   inView,
 }: WorkCardProps) {
+  const CardWrapper = href ? motion.a : motion.article;
+
   return (
-    <motion.article
+    <CardWrapper
+      {...(href
+        ? {
+            href,
+            target: "_blank",
+            rel: "noopener noreferrer",
+          }
+        : {})}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: EASE_OUT }}
-      className="group flex flex-col overflow-hidden"
+      className={`group flex flex-col overflow-hidden${href ? " cursor-pointer" : ""}`}
       style={{
         border: "1px solid var(--color-border)",
         background: "var(--color-surface-2)",
@@ -294,16 +307,18 @@ function WorkCard({
               {sector}
             </p>
           </div>
-          <div
-            className="flex-shrink-0 w-8 h-8 flex items-center justify-center border transition-all duration-300 opacity-0 group-hover:opacity-100"
-            style={{
-              borderColor: accentColor,
-              color: accentColor,
-              transform: "translate(4px, -4px)",
-            }}
-          >
-            <ArrowUpRight size={15} strokeWidth={2} />
-          </div>
+          {href && (
+            <div
+              className="flex-shrink-0 w-8 h-8 flex items-center justify-center border transition-all duration-300 opacity-0 group-hover:opacity-100"
+              style={{
+                borderColor: accentColor,
+                color: accentColor,
+                transform: "translate(4px, -4px)",
+              }}
+            >
+              <ArrowUpRight size={15} strokeWidth={2} />
+            </div>
+          )}
         </div>
 
         {/* Headline */}
@@ -329,6 +344,6 @@ function WorkCard({
           ))}
         </div>
       </div>
-    </motion.article>
+    </CardWrapper>
   );
 }

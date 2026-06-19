@@ -84,7 +84,7 @@ export default function Navbar() {
             <a
               href="#"
               className="relative flex items-center gap-3 overflow-visible group/logo"
-              aria-label="Farol Tech home"
+              aria-label="Farol Digital home"
             >
               <svg
                 className="nav-logo-beam"
@@ -118,7 +118,7 @@ export default function Navbar() {
                 className="relative z-10 font-display text-xl font-light tracking-wide text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Farol Tech
+                Farol Digital
               </span>
             </a>
 

@@ -1,4 +1,4 @@
-# Farol Tech — Landing Page
+# Farol Digital — Landing Page
 
 Digital agency landing page built with Next.js 14 (App Router), Tailwind CSS, Framer Motion, and Resend.
 

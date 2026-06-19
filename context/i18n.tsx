@@ -116,7 +116,7 @@ const translations = {
       subheading:
         "We've helped companies of all sizes build their digital presence, from neighborhood businesses to internationally recognized brands.",
       quote:
-        "Farol Tech guided us from idea to launch and made every step feel effortless.",
+        "Farol Digital guided us from idea to launch and made every step feel effortless.",
       quote_author:
         "Cristiano S. Business Owner"
     },
@@ -263,7 +263,7 @@ const translations = {
       subheading:
         "Ajudamos empresas de todos os portes a construir sua presença digital, desde negócios de bairro até marcas reconhecidas internacionalmente.",
       quote:
-        "A Farol Tech guiou-nos da ideia ao lançamento e tornou cada etapa simples e tranquila.",
+        "A Farol Digital guiou-nos da ideia ao lançamento e tornou cada etapa simples e tranquila.",
       quote_author:
         "Cristiano S. Empresário"
     },

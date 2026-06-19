@@ -25,7 +25,7 @@ export function buildContactEmailHtml(payload: ContactPayload): string {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a172b; color: #f5f0e8; padding: 40px; border-radius: 4px;">
       <div style="border-left: 3px solid #F5A623; padding-left: 20px; margin-bottom: 32px;">
-        <h1 style="font-size: 24px; font-weight: 300; margin: 0 0 4px; color: #F5A623;">Farol Tech</h1>
+        <h1 style="font-size: 24px; font-weight: 300; margin: 0 0 4px; color: #F5A623;">Farol Digital</h1>
         <p style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #5c5650; margin: 0;">New Contact Enquiry</p>
       </div>
 

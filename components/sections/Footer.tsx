@@ -23,7 +23,7 @@ export default function Footer() {
                 className="font-display text-2xl font-light text-[var(--color-ink)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Farol Tech<span className="text-[var(--color-amber)]">.</span>
+                Farol Digital<span className="text-[var(--color-amber)]">.</span>
               </span>
             </div>
             <p className="text-sm text-[var(--color-ink-subtle)] italic" style={{ fontFamily: "var(--font-display)" }}>
@@ -93,7 +93,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--color-ink-subtle)]">
           <p>
-            © {currentYear} Farol Tech. {t.footer.legal}
+            © {currentYear} Farol Digital. {t.footer.legal}
           </p>
           <a
             href="/privacy"

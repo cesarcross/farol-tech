@@ -49,7 +49,7 @@ export function buildContactEmailHtml(payload: ContactPayload): string {
       </table>
 
       <p style="font-size: 11px; color: #5c5650; margin-top: 40px; border-top: 1px solid #1a1a1a; padding-top: 20px;">
-        Sent from faroltech.io contact form · ${new Date().toUTCString()}
+        Sent from faroldigital.app contact form · ${new Date().toUTCString()}
       </p>
     </div>
   `.trim();

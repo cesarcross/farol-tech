@@ -45,7 +45,7 @@ const WA_NUMBER = "351918738888";
 function toWhatsAppUrl(phone: string) {
   const digits = phone.replace(/\D/g, "");
   const text = encodeURIComponent(
-    "Hi! I found you at faroltech.io and I'd like to discuss a project."
+    "Hi! I found you at faroldigital.app and I'd like to discuss a project."
   );
   return `https://wa.me/${digits}?text=${text}`;
 }
@@ -124,7 +124,7 @@ export default function Contact() {
     }
   };
 
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I found you at faroltech.io and I'd like to discuss a project.")}`;
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I found you at faroldigital.app and I'd like to discuss a project.")}`;
 
   const isSubmitDisabled = status === "loading" || cooldown > 0;
 

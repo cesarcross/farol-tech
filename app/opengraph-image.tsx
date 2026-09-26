@@ -131,7 +131,7 @@ export default async function Image() {
             letterSpacing: "0.1em",
           }}
         >
-          faroltech.io
+          faroldigital.app
         </div>
       </div>
     ),

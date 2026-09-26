@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowUpRight,
@@ -136,6 +137,19 @@ export default function Work() {
             />
           ))}
         </div>
+
+        {/* TODO: See more button with new projects */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.45, ease: EASE_OUT }}
+          className="flex justify-center mt-10"
+        >
+          <Link href="/portfolio" className="btn-ghost flex items-center gap-2">
+            {t.work.see_more}
+            <ArrowUpRight size={16} strokeWidth={2} />
+          </Link>
+        </motion.div> */}
 
       </div>
     </section>

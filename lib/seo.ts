@@ -1,9 +1,9 @@
 /** Site-wide SEO config — copy aligned with Hero section (EN default for crawlers). */
 export const siteConfig = {
   name: "Farol Digital",
-  url: "https://faroltech.io",
+  url: "https://faroldigital.app",
   locale: "en_GB",
-  email: "hello@faroltech.io",
+  email: "circulovirtuoso8@gmail.com",
 } as const;
 
 export const seo = {

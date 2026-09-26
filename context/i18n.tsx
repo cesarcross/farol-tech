@@ -125,6 +125,7 @@ const translations = {
       tag: "Selected Work",
       headline: "Projects we're proud of.",
       subtitle: "A sample of recent work across web, mobile, and SaaS.",
+      see_more: "See more",
       cases: {
         "kahu-pet": {
           headline:
@@ -151,7 +152,7 @@ const translations = {
       subheading:
         "Whether you have a detailed plan or just an idea, we'd love to hear about your project.",
       offices: [
-        { city: "Lisbon", phone: "+351 928 459 611",  detail: "CET / WEST" },
+        { city: "Lisbon", phone: "+351 918 738 888",  detail: "CET / WEST" },
         { city: "London", phone: "+44 74 6748 0605", detail: "GMT / BST" },
       ],
       form: {
@@ -271,6 +272,7 @@ const translations = {
       tag: "Projetos em destaque",
       headline: "Projetos de que nos orgulhamos.",
       subtitle: "Uma amostra de trabalho recente em web, mobile e SaaS.",
+      see_more: "Veja mais",
       cases: {
         "kahu-pet": {
           headline:
@@ -296,7 +298,7 @@ const translations = {
       subheading:
         "Seja um plano detalhado ou apenas uma ideia, gostaríamos de conhecer o seu projeto.",
       offices: [
-        { city: "Lisboa", phone: "+351 928 459 611", detail: "CET / WEST" },
+        { city: "Lisboa", phone: "+351 918 738 888", detail: "CET / WEST" },
         { city: "Londres", phone: "+44 74 6748 0605", detail: "GMT / BST" },
       ],
       form: {

@@ -8,7 +8,7 @@ import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const TO_EMAIL = "circulovirtuoso8@gmail.com";
+const TO_EMAIL = "golondon2026@gmail.com";
 const FROM_EMAIL = "Farol Digital <contato@faroldigital.app>";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
